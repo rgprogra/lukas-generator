@@ -2,15 +2,28 @@ import 'package:lukas_generator/lukas_generator.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('A group of tests', () {
-    Awesome awesome;
-
+  group('Lukas Generator', () {
     setUp(() {
-      awesome = Awesome();
+      // awesome = Awesome();
     });
 
-    test('First Test', () {
-      expect(awesome.isAwesome, isTrue);
+    test('Generator Unit parse', () {
+      final template = StringBuffer();
+      template.write(
+          'test\ntemplate name:\$templateName\$ with \n var "foo" with value: \$foo\$');
+
+      final unit = LukasGeneratorUnit(
+        template: template,
+        metadata: {
+          'foo': 'bar',
+          'templateName': 'Custom Template Name',
+        },
+      );
+
+      final result = unit.tryParse();
+
+      print(result);
+      expect(result, isNotNull);
     });
   });
 }
