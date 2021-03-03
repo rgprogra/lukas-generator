@@ -24,5 +24,33 @@ void main() {
 
       expect(result, isNotNull);
     });
+
+    test('LukasGenerator parse', () {
+      final template = StringBuffer();
+      template.write(
+          'test\ntemplate name:\$templateName\$ with \n var "foo" with value: \$foo\$');
+
+      final result = LukasGenerator.tryParseAll(template: template, metadata: [
+        {
+          'foo': 'custom value 1',
+          'templateName': 'Custom Template Name 1',
+        },
+        {
+          'foo': 'custom value 2',
+          'templateName': 'Custom Template Name 2',
+        },
+        {
+          'foo': 'custom value 3',
+          'templateName': 'Custom Template Name 3',
+        },
+        {
+          'foo': 'custom value 4',
+          'templateName': 'Custom Template Name 4',
+        },
+      ]);
+
+      print(result?.toString());
+      expect(result, isNotNull);
+    });
   });
 }
