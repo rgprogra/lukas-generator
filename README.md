@@ -1,7 +1,4 @@
-A library for Dart developers.
-
-Created from templates made available by Stagehand under a BSD-style
-[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
+Lukas Generator Package help you to generate objects based on a template and custom params.
 
 ## Usage
 
@@ -11,12 +8,17 @@ A simple usage example:
 import 'package:lukas_generator/lukas_generator.dart';
 
 main() {
-  var awesome = new Awesome();
+  final template = StringBuffer();
+  template.write('example template \n var varName = \$varName\$; \$foo\$');
+
+  final generatedUnit = LukasGeneratorUnit(
+    template: template,
+    metadata: {'varName': 'custom string value', 'foo': 'bar'},
+  );
+
+  final parsed = generatedUnit.tryParse()?.toString() ?? '';
+
+  print(parsed);
 }
 ```
 
-## Features and bugs
-
-Please file feature requests and bugs at the [issue tracker][tracker].
-
-[tracker]: http://example.com/issues/replaceme
