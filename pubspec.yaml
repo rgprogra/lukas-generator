@@ -1,7 +1,8 @@
 name: lukas_generator
 description: Lukas Generator Package help you to generate objects based on a template and custom params
 version: '1.0.0'
-# homepage: https://www.example.com
+homepage: https://github.com/rgprogra/lukas_generator
+repository: https://github.com/rgprogra/lukas_generatorst
 
 environment:
   sdk: '>=2.10.0 <3.0.0'
