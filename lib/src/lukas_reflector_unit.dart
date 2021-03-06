@@ -1,17 +1,26 @@
 import 'dart:mirrors';
 
+import 'package:meta/meta.dart';
+
 class LukasReflectorUnit {
+  final Type type;
+  final Map<dynamic, dynamic> data;
+
+  const LukasReflectorUnit({
+    @required this.type,
+    @required this.data,
+  });
+
   // static void reflectClass({Type classType, Map<String, String> metadata}) {}
 
-  static T reflectWithData<T>({T classType, Map<dynamic, dynamic> data}) {
-    // final _reflected = reflectType(T);
-    // final _instance = _reflected.newInstance(
-    //   Symbol(''),
-    //   [],
-    // );
-    // _instance.invoke(Symbol('readFromMap'), [data]);
+  Type getInstance<Type>() {
+    final _reflected = reflectClass(type);
+    final _instance = _reflected.newInstance(
+      Symbol(''),
+      [],
+    );
+    _instance.invoke(#readFromMap, [data]);
 
-    // return _instance.hasReflectee ? _instance.reflectee : null;
-    return classType;
+    return _instance.hasReflectee ? _instance.reflectee : null;
   }
 }

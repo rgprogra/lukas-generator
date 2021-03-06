@@ -28,9 +28,13 @@ void main() {
 
     test('Reflector Unit', () {
       var data = {'var_name': 'custom value'};
+      final _reflector = LukasReflectorUnit(
+        type: TestModel,
+        data: data,
+      );
 
-      final _instance =
-          LukasReflectorUnit.reflectWithData(classType: TestModel, data: data);
+      final _instance = _reflector.getInstance() as TestModel;
+
       expect(_instance is TestModel, true);
     });
   });
