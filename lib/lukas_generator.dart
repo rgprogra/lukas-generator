@@ -5,3 +5,4 @@ library lukas_generator;
 
 export 'src/lukas_generator_base.dart';
 export 'src/lukas_generator_unit.dart';
+export 'src/lukas_reflector_unit.dart';
